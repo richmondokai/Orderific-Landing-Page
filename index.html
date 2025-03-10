@@ -7,123 +7,83 @@
     <title>Orderific</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        .checkmark {
-            color: rgb(255, 106, 0); /* Change checkmark color */
-            font-size: 1.2em; /* Adjust checkmark size */
-        }
 
-        /* Custom CSS for responsiveness */
-        @media (max-width: 768px) {
-            .header-nav {
+@media (max-width: 1024px) {
+            .header-nav, .header-right {
                 display: none; /* Hide navigation on smaller screens */
             }
-            .header-right {
-                flex-direction: column;
-                gap: 10px;
-            }
-            .landing-section {
-                flex-direction: column;
-                align-items: center;
-            }
-            .landing-section > div {
-                width: 100% !important;
-            }
-            .footer-top {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .footer-buttons {
-                flex-direction: column;
-                gap: 10px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-logo span {
-                display: none; /* Hide logo text on very small screens */
-            }
-            .landing-section h1 {
-                font-size: 2rem; /* Adjust font size for smaller screens */
-            }
-            .footer-middle {
-                grid-template-columns: 1fr; /* Stack footer sections on small screens */
-            }
-        }
-
-        /* Media Queries for Non-Landscape Screens */
-        @media (orientation: portrait) {
-            /* Header Layout for Non-Landscape Screens */
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 16px;
-            }
-            .header-logo {
-                margin-bottom: 16px; /* Add space below the logo */
-            }
-            .header-nav {
+            .mobile-menu {
                 display: flex;
-                gap: 16px;
-                margin-bottom: 16px; /* Add space below the navigation */
-                font-size: 14px; /* Adjust font size for navigation */
-            }
-            .header-right {
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            /* Footer Layout for Non-Landscape Screens */
-            .footer-top {
                 flex-direction: column;
-                align-items: flex-start;
-                text-align: left;
-            }
-            .footer-buttons {
-                flex-direction: column;
+                align-items: center;
                 gap: 10px;
-                margin-top: 16px;
+            }
+            .mobile-header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                position: relative;
+            }
+            #menu-toggle {
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+            }
+            .mobile-actions {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                margin-top: 3rem;
             }
         }
     </style>
 </head>
 <body class="font-['Poppins']">
     <!-- Header -->
-    <header class="flex items-center justify-between px-8 py-4 shadow-md bg-white">
-        <!-- Logo and Hamburger Menu -->
-        <div class="flex items-center space-x-4">
-            <!-- Hamburger Menu for Mobile -->
-            <button id="menu-toggle" class="md:hidden">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-            <!-- Logo -->
-            <div class="flex items-center space-x-2">
-                <img src="Logo2.png" alt="Orderific Logo" class="h-10 w-25">
-            </div>            
+    <header class="flex items-center justify-between px-8 py-4 shadow-md bg-white relative md:flex-row md:items-center">
+        <!-- Mobile Header Layout -->
+        <div class="mobile-header md:hidden w-full text-center">
+            <img src="Logo2.png" alt="Orderific Logo" class="h-10 w-25 mx-auto">
+            <div class="mobile-actions">
+                <img src="Group 1000004284.png" alt="UK Flag" class="h-6">
+                <button class="bg-white text-black font-bold rounded-xl border border-gray-300 px-6 py-3 shadow-md hover:bg-gray-100">
+                    Login
+                </button>
+                <button class="px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700">START FOR FREE</button>
+            </div>
         </div>
         
+        <!-- Desktop Header Layout -->
+        <div class="hidden md:flex items-center space-x-4">
+            <img src="Logo2.png" alt="Orderific Logo" class="h-10 w-25">
+        </div>
         <!-- Navigation -->
         <nav class="hidden md:flex space-x-6 text-gray-700">
             <a href="#" class="hover:text-orange-600">Home</a>
-            <a href="#" class="hover:text-orange-600">Features</a>
+            <button class="text-black font-medium flex items-center">Features <span class="ml-2">&#9662;</span></button>
             <a href="#" class="hover:text-orange-600">Pricing</a>
             <a href="#" class="hover:text-orange-600">About Us</a>
             <a href="#" class="hover:text-orange-600">Blog</a>
             <a href="#" class="hover:text-orange-600">Contact</a>
         </nav>
         
-        <!-- Right Section -->
-        <div class="flex items-center space-x-4">
-            <img src="Group 1000004284.png" alt="UK Flag" class="h-5 w-6">
-            <button class="px-4 py-2 border rounded-md text-black hover:bg-gray-100">Login</button>
-            <button class="px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-600">START FOR FREE</button>
+        <!-- UK Flag, Login, and START FOR FREE Button (Desktop) -->
+        <div class="hidden md:flex items-center space-x-4">
+            <img src="Group 1000004284.png" alt="UK Flag" class="h-6">
+            <button class="bg-white text-black font-bold rounded-xl border border-gray-300 px-6 py-3 shadow-md hover:bg-gray-100">
+                Login
+            </button>
+            <button class="px-4 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700">START FOR FREE</button>
         </div>
+        
+        <!-- Hamburger Menu Icon -->
+        <button id="menu-toggle" class="md:hidden px-2 py-1 border rounded text-gray-700">☰</button>
     </header>
-
+    
     <!-- Mobile Navigation Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md p-4">
         <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Home</a>
         <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Features</a>
         <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Pricing</a>
@@ -226,7 +186,7 @@
                 </div>
 
                 <!-- Download Buttons -->
-                <div class="flex flex-col space-y-4 mt-6 md:mt-0">
+                <div class="flex download-buttons md:flex-row flex-col space-y-4 md:space-y-0 md:space-x-4 mt-6 md:mt-0">
                     <button class="bg-orange-600 text-white px-5 py-3 rounded-lg flex items-center text-base font-medium shadow-md">
                         <img src="Vector (6).png" alt="iOS" class="h-6 w-5 mr-2"> Download for iOS
                     </button>
@@ -268,7 +228,7 @@
                         <li>Licenses</li>
                         <li>Changelog</li>
                         <li>
-                            <a href="#" class="text-orange-600 font-bold">Browse More Templates</a>
+                            <a href="#" class="text-orange-600 font-bold underline">Browse More Templates</a>
                         </li>
                     </ul>
                 </div>
